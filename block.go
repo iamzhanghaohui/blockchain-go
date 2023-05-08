@@ -24,7 +24,12 @@ func (b *Block) SetHash() {
 
 func NewBlock(data string, prevBlockHash []byte) *Block {
 	block := &Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}, 0}
-	block.SetHash()
+	pow := NewProofOfWork(block)
+	nonce, hash := pow.Run()
+
+	block.Hash = hash[:]
+	block.Nonce = nonce
+
 	return block
 }
 

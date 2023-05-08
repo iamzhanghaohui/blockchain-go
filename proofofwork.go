@@ -13,7 +13,7 @@ var (
 )
 
 //难度，多少位
-const targetBits = 24
+const targetBits = 4
 
 // ProofOfWork represents a proof-of-work
 type ProofOfWork struct {
@@ -96,8 +96,6 @@ func (pow *ProofOfWork) Validate() bool {
 	data := pow.prepareData(pow.block.Nonce)
 	hash := sha256.Sum256(data)
 	hashInt.SetBytes(hash[:])
-
 	isValid := hashInt.Cmp(pow.target) == -1
-
 	return isValid
 }
