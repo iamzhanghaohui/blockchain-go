@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	bc := NewBlockchain1()
+	bc := NewBlockchain()
 
 	bc.AddBlock("Send 1 BTC to Free")
 	bc.AddBlock("Send 2 BTC to Free")
